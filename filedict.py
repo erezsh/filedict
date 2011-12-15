@@ -21,7 +21,6 @@ class FileDict(UserDict.DictMixin):
         connection - use an existing connection instead of a filename (overrides filename)
         table - which table name to use for storing data (default: 'dict')
     
-    
     """
 
     def __init__(self, filename=None, solution=Solutions.Sqlite3, **options):
