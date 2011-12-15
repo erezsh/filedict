@@ -24,6 +24,7 @@ Examples
     {'bla': 10, (2, 1): ['hello', (1, 2)]}
 
 Using batch mode for fast writing:
+
     >>> d=filedict.FileDict(filename="try.dict")
     >>> with d.batch:  # using .batch suspend commits, making a batch of changes quicker
     >>>    for i in range(100000):
