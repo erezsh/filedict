@@ -7,25 +7,26 @@ Performance obviously cannot compare to the builtin dictionary, but it is reason
 
 Examples
 -----------
-    $ python
-    >>> import filedict
-    >>> d=filedict.FileDict(filename="example.dict")
+```python
+    >>> from filedict import FileDict
+    >>> d=FileDict("example.dict")
     >>> d['bla'] = 10
     >>> d[(2,1)] = ['hello', (1,2) ]
-    -- exit --
-    $ python
+    #-- exit & open a new session --
     >>> import filedict
-    >>> d=filedict.FileDict(filename="example.dict")
+    >>> d=FileDict("example.dict")
     >>> print d['bla']
     10
     >>> print d.items()
     [['bla', 10], [(2, 1), ['hello', (1, 2)]]]
     >>> print dict(d)
     {'bla': 10, (2, 1): ['hello', (1, 2)]}
+```
 
 Using batch mode for fast writing:
 
-    >>> d=filedict.FileDict(filename="try.dict")
+```python
+    >>> d=FileDict("try.dict")
     >>> with d.batch:  # using .batch suspend commits, making a batch of changes quicker
     >>>    for i in range(100000):
     >>>            d[i] = i**2
@@ -35,14 +36,14 @@ Using batch mode for fast writing:
     >>> del d[103]
     >>> print len(d)
     99999
-
+```
 
 Limitations
 -----------
 
 All data (keys and values) must be pickle-able
-Keys must be hashable (perhaps this should be removed by hashing the pickled key)
-Keys and values are stored as a copy, so changing them after assignment will not update the dictionary.
+All keys must be hashable (perhaps this could be removed in the future, by hashing the pickled key)
+Both keys and values are stored as a copy, so changing them after assignment will not update the dictionary.
 
 
 Future
@@ -51,5 +52,5 @@ Future
 Additions in the future may include:
 
 * An LRU-cache for fetching entries
-* A storage strategy different than Sqlite
+* Support for more databases (i.e. other than Sqlite)
 
