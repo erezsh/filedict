@@ -30,7 +30,7 @@ Using batch mode for fast writing:
     >>> with d.batch:  # using .batch suspend commits, making a batch of changes quicker
     >>>    for i in range(100000):
     >>>            d[i] = i**2
-    (takes about 8 seconds on my comp)
+    # This runs for a few seconds
     >>> print len(d)
     100000
     >>> del d[103]
